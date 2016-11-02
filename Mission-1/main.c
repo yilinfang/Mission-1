@@ -35,7 +35,6 @@ int main()
             break;
         }
         c=rand()/(RAND_MAX+1.0);
-        //printf("%f ",c);  测试为什么出错
         if (c > 0.03125) //躲过炮击的概率为0.03125。。。好可怜的飞机
         {
            a[head]=0;
