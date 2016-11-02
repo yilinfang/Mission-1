@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1478080799 source:e:\function\uniquegame test\mission-1\mission-1\mission-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
