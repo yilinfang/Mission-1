@@ -12,10 +12,10 @@
  * using the + and - keys.
  */
 
+/*
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
-#include <windows.h>
 #include <GL/glut.h>
 #endif
 
@@ -26,7 +26,7 @@ static int stacks = 16;
 
 /* GLUT callback Handlers */
 
-static void resize(int width, int height)
+/*static void resize(int width, int height)
 {
     const float ar = (float) width / (float) height;
 
@@ -136,7 +136,7 @@ const GLfloat high_shininess[] = { 100.0f };
 
 /* Program entry point */
 
-int main(int argc, char *argv[])
+/*int main(int argc, char *argv[])
 {
     glutInit(&argc, argv);
     glutInitWindowSize(640,480);
@@ -175,4 +175,12 @@ int main(int argc, char *argv[])
     glutMainLoop();
 
     return EXIT_SUCCESS;
-}
+}*/
+#include<iostream>
+#include<time.h>
+#include<vector>
+class plane{
+    int age;
+    int birth;
+};
+typedef class plane plane;
