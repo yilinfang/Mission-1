@@ -32,7 +32,7 @@ int main()
             t=0;
             if (a[j].age > 0)
                 a[j].age++; //增加飞机存活时间
-            if ((n < 500) && (a[j].age == 0) && (t < 100))
+            if ((n < 500) && (a[j].age == 0) && (t < 100) && ((i % 60)==0))
             {
                 a[j].age=1;
                 a[j].birth=i;
