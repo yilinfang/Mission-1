@@ -66,7 +66,7 @@ public:
     }
     bool Empty()
     {
-        return (rear+1)% MAXSIZE == head;
+        return rear == head;
     }
     bool Result()
     {
@@ -115,7 +115,6 @@ void CPlaneFlock::Shoot()
 {
     float t;
     t=rand()/(RAND_MAX+1.0);
-    surviveOne();
     if(!Empty() && t> survivalRate)
     {
         head = (head + 1) % MAXSIZE;
