@@ -22,14 +22,14 @@ int main()
         a[i].age=0;
         a[i].birth=0;
     }
-    for(i=1;i<2400;i++) //每一帧执行一次
+    for(i=0;i<2400;i++) //每一帧执行一次
     {
         int j;
+        int t;
+        t=0;
         float c;//存放比对结果，t的值小于0.5的五次方，则飞机逃过这轮炮击
         for(j=0;j<=499;j++)
         {
-            int t;
-            t=0;
             if (a[j].age > 0)
                 a[j].age++; //增加飞机存活时间
             if ((n < 500) && (a[j].age == 0) && (t < 100) && ((i % 60)==0))
@@ -38,6 +38,7 @@ int main()
                 a[j].birth=i;
                 n++;
                 t++;
+                //printf("%d ",t);
             } //新建飞机
         }
         if (a[head].age==600) //飞机胜利
