@@ -1,186 +1,155 @@
-/*
- * GLUT Shapes Demo
- *
- * Written by Nigel Stewart November 2003
- *
- * This program is test harness for the sphere, cone
- * and torus shapes in GLUT.
- *
- * Spinning wireframe and smooth shaded shapes are
- * displayed until the ESC or q key is pressed.  The
- * number of geometry stacks and slices can be adjusted
- * using the + and - keys.
- */
-
-/*
-#ifdef __APPLE__
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
-
-#include <stdlib.h>
-
-static int slices = 16;
-static int stacks = 16;
-
-/* GLUT callback Handlers */
-
-/*static void resize(int width, int height)
-{
-    const float ar = (float) width / (float) height;
-
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glFrustum(-ar, ar, -1.0, 1.0, 2.0, 100.0);
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity() ;
-}
-
-static void display(void)
-{
-    const double t = glutGet(GLUT_ELAPSED_TIME) / 1000.0;
-    const double a = t*90.0;
-
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glColor3d(1,0,0);
-
-    glPushMatrix();
-        glTranslated(-2.4,1.2,-6);
-        glRotated(60,1,0,0);
-        glRotated(a,0,0,1);
-        glutSolidSphere(1,slices,stacks);
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(0,1.2,-6);
-        glRotated(60,1,0,0);
-        glRotated(a,0,0,1);
-        glutSolidCone(1,1,slices,stacks);
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(2.4,1.2,-6);
-        glRotated(60,1,0,0);
-        glRotated(a,0,0,1);
-        glutSolidTorus(0.2,0.8,slices,stacks);
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(-2.4,-1.2,-6);
-        glRotated(60,1,0,0);
-        glRotated(a,0,0,1);
-        glutWireSphere(1,slices,stacks);
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(0,-1.2,-6);
-        glRotated(60,1,0,0);
-        glRotated(a,0,0,1);
-        glutWireCone(1,1,slices,stacks);
-    glPopMatrix();
-
-    glPushMatrix();
-        glTranslated(2.4,-1.2,-6);
-        glRotated(60,1,0,0);
-        glRotated(a,0,0,1);
-        glutWireTorus(0.2,0.8,slices,stacks);
-    glPopMatrix();
-
-    glutSwapBuffers();
-}
-
-
-static void key(unsigned char key, int x, int y)
-{
-    switch (key)
-    {
-        case 27 :
-        case 'q':
-            exit(0);
-            break;
-
-        case '+':
-            slices++;
-            stacks++;
-            break;
-
-        case '-':
-            if (slices>3 && stacks>3)
-            {
-                slices--;
-                stacks--;
-            }
-            break;
-    }
-
-    glutPostRedisplay();
-}
-
-static void idle(void)
-{
-    glutPostRedisplay();
-}
-
-const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
-const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
-const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-const GLfloat light_position[] = { 2.0f, 5.0f, 5.0f, 0.0f };
-
-const GLfloat mat_ambient[]    = { 0.7f, 0.7f, 0.7f, 1.0f };
-const GLfloat mat_diffuse[]    = { 0.8f, 0.8f, 0.8f, 1.0f };
-const GLfloat mat_specular[]   = { 1.0f, 1.0f, 1.0f, 1.0f };
-const GLfloat high_shininess[] = { 100.0f };
-
-/* Program entry point */
-
-/*int main(int argc, char *argv[])
-{
-    glutInit(&argc, argv);
-    glutInitWindowSize(640,480);
-    glutInitWindowPosition(10,10);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-
-    glutCreateWindow("GLUT Shapes");
-
-    glutReshapeFunc(resize);
-    glutDisplayFunc(display);
-    glutKeyboardFunc(key);
-    glutIdleFunc(idle);
-
-    glClearColor(1,1,1,1);
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_BACK);
-
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
-
-    glEnable(GL_LIGHT0);
-    glEnable(GL_NORMALIZE);
-    glEnable(GL_COLOR_MATERIAL);
-    glEnable(GL_LIGHTING);
-
-    glLightfv(GL_LIGHT0, GL_AMBIENT,  light_ambient);
-    glLightfv(GL_LIGHT0, GL_DIFFUSE,  light_diffuse);
-    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-
-    glMaterialfv(GL_FRONT, GL_AMBIENT,   mat_ambient);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE,   mat_diffuse);
-    glMaterialfv(GL_FRONT, GL_SPECULAR,  mat_specular);
-    glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
-
-    glutMainLoop();
-
-    return EXIT_SUCCESS;
-}*/
 #include<iostream>
 #include<time.h>
 #include<vector>
-class plane{
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define survivalRate 0.03125
+using namespace std;
+class CPlane{
+public:
+    CPlane():position(0),birth(0),speed(10),hp(1),age(1){}
+    void setBirth(int t){
+        birth=t;
+    }
+    void setSpeed(int t){
+        speed=t;
+    }
+    void setHp(int t){
+        hp=t;
+    }
+    void setPosition(float t){
+        position=t;
+    }
+    void setAge(int t){
+        age=t;
+    }
+    float getPosition(){
+        return position;
+    }
+    int getSpeed(){
+        return speed;
+    }
+    int getBirth(){
+        return birth;
+    }
+    int getHp(){
+        return hp;
+    }
+    int getAge(){
+        return age;
+    }
+    void Display(){
+        cout<<"位置："<<position<<" 存活时间:"<<age<<" 出现时间："<<birth<<" 速度："<<speed<<" "<<endl;
+    }
+    void incAge(){
+        age++;
+    }
+private:
+    float position;
     int age;
     int birth;
+    int speed;
+    int hp;
 };
-typedef class plane plane;
+class CPlaneFlock{
+public:
+    CPlaneFlock();
+    void Init();
+    void addPlane(int n);
+    void surviveOne();
+    void Shoot();
+    void Simulate();
+    bool Full()  //判断是不是满了
+    {
+        return (rear+1)% MAXSIZE == head;
+    }
+    bool Empty()
+    {
+        return (rear+1)% MAXSIZE == head;
+    }
+    bool Result()
+    {
+        if (!Empty() && (flock[(head + 1) % MAXSIZE].getAge() % 600) == 0)
+            return 1;
+        else return 0;
+    }
+private:
+    static const int MAXSIZE=501;
+    static const int MAXNUM = MAXSIZE - 1;
+    CPlane flock[MAXSIZE];
+    int head;
+    int rear;
+};
+
+CPlaneFlock::CPlaneFlock()
+{
+    Init();
+}
+void CPlaneFlock::Init()
+{
+    head=rear=0;
+}
+
+void CPlaneFlock::addPlane(int n)
+{
+    int i=0;
+    while(!Full() && i<n)
+    {
+        rear = (rear + 1) % MAXSIZE;
+        flock[rear].incAge();//补充飞机
+        i++;
+    }
+}
+void CPlaneFlock::surviveOne()
+{
+    int i=head;
+    while (i != rear)
+    {
+        i=(i+1)% MAXSIZE;
+        flock[i].incAge();
+    }
+}
+
+void CPlaneFlock::Shoot()
+{
+    float t;
+    t=rand()/(RAND_MAX+1.0);
+    surviveOne();
+    if(!Empty() && t> survivalRate)
+    {
+        head = (head + 1) % MAXSIZE;
+        flock[head].setAge(0);
+    }
+}
+void CPlaneFlock::Simulate()
+{
+    int i,sign;
+    float flyTime,dis,arriveTime;
+    sign=0;//0表示炮台胜利，1代表飞机胜利
+    dis=0;//表示飞的最远的飞机所到达的距离
+    arriveTime=0;//表示飞机抵达的时间
+    for(i=1;i<2400;i++) //每一帧执行一次
+    {
+        surviveOne();
+        if (Result()) //飞机胜利
+        {
+            sign=1;
+            break;
+        }
+        if (i % 60 == 0)
+            addPlane(100);
+        Shoot();
+    }
+    if (sign == 1)
+      printf("Planes Win!!!");
+        else printf("Emplacements Win!!!\n");
+}
+int main()
+{
+    srand((unsigned)time(NULL));
+    CPlaneFlock mission1;
+    mission1.Simulate();
+    return 0;
+}
+
