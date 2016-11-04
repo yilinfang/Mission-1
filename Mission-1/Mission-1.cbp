@@ -42,10 +42,13 @@
 			<Add library="gdi32" />
 			<Add directory="C:/MinGW/lib" />
 		</Linker>
-		<Unit filename="CPlane.h">
+		<Unit filename="Factory.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="CPlaneFlock.h">
+		<Unit filename="Plane.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="PlaneFlock.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />

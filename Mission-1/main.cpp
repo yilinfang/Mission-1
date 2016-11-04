@@ -3,50 +3,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "CPlane.h"
-#include "CPlaneFlock.h"
+#include "Plane.h"
+#include "PlaneFlock.h"
+#include "Factory.h"
 #define survivalRate 0.03125
 using namespace std;
-CPlaneFlock::CPlaneFlock()
+PlaneFlock::PlaneFlock()
 {
     Init();
 }
-void CPlaneFlock::Init()
+void PlaneFlock::Init()
 {
     head=rear=0;
 }
-
-void CPlaneFlock::addPlane(int n)
-{
-    int i=0;
-    while(!Full() && i<n)
-    {
-        rear = (rear + 1) % MAXSIZE;
-        flock[rear].incAge();//²¹³ä·É»ú
-        i++;
-    }
-}
-void CPlaneFlock::surviveOne()
+void PlaneFlock::surviveOne()
 {
     int i=head;
     while (i != rear)
     {
         i=(i+1)% MAXSIZE;
-        flock[i].incAge();
+        flock[i]->incAge();
     }
 }
 
-void CPlaneFlock::Shoot()
+void PlaneFlock::Shoot()
 {
     float t;
     t=rand()/(RAND_MAX+1.0);
     if(!Empty() && t> survivalRate)
     {
         head = (head + 1) % MAXSIZE;
-        flock[head].setAge(0);
+        flock[head]->setAge(0);
     }
 }
-void CPlaneFlock::Simulate()
+void PlaneFlock::Simulate()
 {
     int i,sign;
     float flyTime,dis,arriveTime;
@@ -62,7 +52,7 @@ void CPlaneFlock::Simulate()
             break;
         }
         if (i % 60 == 0)
-            addPlane(100);
+            rear=factory.createPlane(head,rear,100,flock);
         Shoot();
     }
     if (sign == 1)
@@ -72,7 +62,7 @@ void CPlaneFlock::Simulate()
 int main()
 {
     srand((unsigned)time(NULL));
-    CPlaneFlock mission1;
+    PlaneFlock mission1;
     mission1.Simulate();
     return 0;
 }

@@ -1,12 +1,13 @@
 # depslib dependency file v1.0
-1478226598 source:e:\function\uniquegame test\mission-1\mission-1\mission-1\main.cpp
+1478244093 source:e:\function\uniquegame test\mission-1\mission-1\mission-1\main.cpp
 	<iostream>
 	<time.h>
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
-	"CPlane.h"
-	"CPlaneFlock.h"
+	"Plane.h"
+	"PlaneFlock.h"
+	"Factory.h"
 
 903428686 c:\mingw\include\gl\glut.h
 	<windows.h>
@@ -306,4 +307,14 @@
 
 1478226598 e:\function\uniquegame test\mission-1\mission-1\mission-1\cplaneflock.h
 	"CPlane.h"
+
+1478238383 e:\function\uniquegame test\mission-1\mission-1\mission-1\plane.h
+	<iostream>
+
+1478243872 e:\function\uniquegame test\mission-1\mission-1\mission-1\planeflock.h
+	"Plane.h"
+	"Factory.h"
+
+1478244311 e:\function\uniquegame test\mission-1\mission-1\mission-1\factory.h
+	"Plane.h"
 

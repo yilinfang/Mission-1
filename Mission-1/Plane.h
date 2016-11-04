@@ -1,10 +1,10 @@
-#ifndef CPLANE_H_INCLUDED
-#define CPLANE_H_INCLUDED
+#ifndef PLANE_H_INCLUDED
+#define PLANE_H_INCLUDED
 #include<iostream>
 using namespace std;
-class CPlane{
+class Plane{
 public:
-    CPlane():position(0),birth(0),speed(10),hp(1),age(1){}
+    Plane():position(0),birth(0),speed(10),hp(1),age(1){}
     void setBirth(int t){
         birth=t;
     }
@@ -48,4 +48,4 @@ private:
     int speed;
     int hp;
 };
-#endif // CPLANE_H_INCLUDED
+#endif // PLANE_H_INCLUDED
