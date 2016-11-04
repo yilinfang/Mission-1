@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="CppMission2" />
+		<Option title="Mission-1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="factory.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="plane.cpp" />
 		<Unit filename="plane.h">

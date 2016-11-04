@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "planeflock.h"
-
+#include "factory.h"
 PlaneFlock::PlaneFlock()
 {
     Init();
@@ -17,7 +17,8 @@ void PlaneFlock::addPlane(int n)
     while(!Full() && i<n)
     {
         rear = (rear + 1) % MAXSIZE;
-        flock[rear].setAge(1);//补充飞机
+        //flock[rear].setAge(1);//补充飞机
+        flock[rear] = Factory::CreatePlane();  //工厂模式，建立飞机模型数据
         i++;
     }
     //printf("%d,%d\n",i,GetQty());
