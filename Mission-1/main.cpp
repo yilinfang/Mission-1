@@ -1,87 +1,12 @@
 #include<iostream>
 #include<time.h>
-#include<vector>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "CPlane.h"
+#include "CPlaneFlock.h"
 #define survivalRate 0.03125
 using namespace std;
-class CPlane{
-public:
-    CPlane():position(0),birth(0),speed(10),hp(1),age(1){}
-    void setBirth(int t){
-        birth=t;
-    }
-    void setSpeed(int t){
-        speed=t;
-    }
-    void setHp(int t){
-        hp=t;
-    }
-    void setPosition(float t){
-        position=t;
-    }
-    void setAge(int t){
-        age=t;
-    }
-    float getPosition(){
-        return position;
-    }
-    int getSpeed(){
-        return speed;
-    }
-    int getBirth(){
-        return birth;
-    }
-    int getHp(){
-        return hp;
-    }
-    int getAge(){
-        return age;
-    }
-    void Display(){
-        cout<<"位置："<<position<<" 存活时间:"<<age<<" 出现时间："<<birth<<" 速度："<<speed<<" "<<endl;
-    }
-    void incAge(){
-        age++;
-    }
-private:
-    float position;
-    int age;
-    int birth;
-    int speed;
-    int hp;
-};
-class CPlaneFlock{
-public:
-    CPlaneFlock();
-    void Init();
-    void addPlane(int n);
-    void surviveOne();
-    void Shoot();
-    void Simulate();
-    bool Full()  //判断是不是满了
-    {
-        return (rear+1)% MAXSIZE == head;
-    }
-    bool Empty()
-    {
-        return rear == head;
-    }
-    bool Result()
-    {
-        if (!Empty() && (flock[(head + 1) % MAXSIZE].getAge() % 600) == 0)
-            return 1;
-        else return 0;
-    }
-private:
-    static const int MAXSIZE=501;
-    static const int MAXNUM = MAXSIZE - 1;
-    CPlane flock[MAXSIZE];
-    int head;
-    int rear;
-};
-
 CPlaneFlock::CPlaneFlock()
 {
     Init();
@@ -141,7 +66,7 @@ void CPlaneFlock::Simulate()
         Shoot();
     }
     if (sign == 1)
-      printf("Planes Win!!!");
+      printf("Planes Win!!!\n");
         else printf("Emplacements Win!!!\n");
 }
 int main()
