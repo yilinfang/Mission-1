@@ -145,12 +145,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="factory.h" />
+    <ClInclude Include="plane.h" />
+    <ClInclude Include="planeflock.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Mission-1.cpp" />
+    <ClCompile Include="plane.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="planeflock.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

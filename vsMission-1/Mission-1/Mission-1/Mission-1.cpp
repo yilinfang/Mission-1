@@ -4,8 +4,21 @@
 #include "stdafx.h"
 
 
+#include<iostream>
+#include <stdlib.h>
+#include <time.h>
+#include "planeflock.h"
+
+
+using namespace std;
+
+
+
 int main()
 {
-    return 0;
+	srand((unsigned)time(NULL));
+	CPlaneFlock mission1;
+	mission1.Simulate();
+	getchar();
+	return 0;
 }
-
