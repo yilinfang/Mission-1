@@ -1,6 +1,6 @@
 #include<iostream>
 #include "plane.h"
-Plane::Plane():position(0),birth(0),speed(10),hp(1),age(1)
+Plane::Plane():position(0),birth(0),speed(10),hp(1),age(0)
 {
 
 }

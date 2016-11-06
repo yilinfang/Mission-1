@@ -18,7 +18,8 @@ void PlaneFlock::addPlane(int n)
     {
         rear = (rear + 1) % MAXSIZE;
         //flock[rear].setAge(1);//补充飞机
-        flock[rear] = Factory::CreatePlane();  //工厂模式，建立飞机模型数据
+        Factory::CreatePlane(flock[rear]); //工厂模式，建立飞机模型数据
+        //printf("%d ",flock[rear].getAge());//测试用句
         i++;
     }
     //printf("%d,%d\n",i,GetQty());

@@ -4,10 +4,9 @@
 class Factory
 {
 public:
-    static Plane CreatePlane()
+    static void CreatePlane(Plane& plane)
     {
-        Plane t;
-        return t;
+        plane.incAge();
     }
 };
 
