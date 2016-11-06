@@ -6,7 +6,7 @@ public:
     void setBirth(int t);
     void setSpeed(int t);
     void setHp(int t);
-    void setPosition(float t);
+    void setPosition();
     void setAge(int t);
     float getPosition();
     int getSpeed();

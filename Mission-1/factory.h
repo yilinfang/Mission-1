@@ -4,7 +4,7 @@
 class Factory
 {
 public:
-    static void CreatePlane(Plane& plane)
+    static void wakePlane(Plane& plane)
     {
         plane.incAge();
     }

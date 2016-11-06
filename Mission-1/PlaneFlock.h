@@ -8,15 +8,15 @@ class PlaneFlock{
 public:
     PlaneFlock();
     void Init();
-    void addPlane(int n);
+    void addPlane(int ,int);
     void surviveOne();
-    void Shoot();
+    float Shoot();
     void Simulate();
     bool Full()  //判断是不是满了
     {
         return (rear+1)% MAXSIZE == head;
     }
-    bool Empty()//错了
+    bool Empty()
     {
         return rear == head;
     }

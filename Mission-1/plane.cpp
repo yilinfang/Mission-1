@@ -1,10 +1,10 @@
 #include<iostream>
 #include "plane.h"
-Plane::Plane():position(0),birth(0),speed(10),hp(1),age(0)
+Plane::Plane():birth(0),speed(10),hp(1),position(100),age(0)
 {
 
 }
-void Plane::setBirth(int t)
+void Plane::setBirth(int t)//֡
 {
     birth=t;
 }
@@ -16,11 +16,11 @@ void Plane::setHp(int t)
 {
     hp=t;
 }
-void Plane::setPosition(float t)
+void Plane::setPosition()//֡
 {
-    position=t;
+    position=100-age/6.0;
 }
-void Plane::setAge(int t)
+void Plane::setAge(int t)//֡
 {
     age = t;
 

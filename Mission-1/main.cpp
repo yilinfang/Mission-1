@@ -7,7 +7,7 @@
 
 
 using namespace std;
-
+int planeNum=0;
 
 
 int main()
